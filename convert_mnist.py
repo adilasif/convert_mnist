@@ -18,8 +18,6 @@ def convert(image_file, label_file, output_file, num_images):
     label = ord(labels.read(1))
     output.write('    {\n      "digit": ' + str(label) + ',\n')
     output.write('      "pixels": [')
-
-    # There are 28**2 or 784 pixels per image
     for j in range(784):
       value = ord(images.read(1))
       if j == 0:
