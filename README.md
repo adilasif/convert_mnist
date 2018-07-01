@@ -7,8 +7,6 @@ ___
 
 2: Extract MNIST files to same directory as this script.
 
-3: Check the file names and paths with those in the script - make any adjustments you'd like.
-
-4: Change the integer on line 33 (the 4th parameter in the `main` function call) to the number of images you'd like the script to output.
+3: Go to the `main` function in the script (lines 39 - 55). Follow the directions in the comments to adjust your parameters.
 
 4: Run the script using `python convert_mnist.py` in the terminal.

@@ -1,7 +1,7 @@
 # The MNIST dataset has labels (which denote the correct value of the
-# handwritten digit) and pixel values separate. The images are a 28
-# by 28 pixel grid of values that range from 0 (white) to 255 (black)
-# with in-between values being shades of gray.
+# handwritten digit) and pixel values separate. The images are a 28 by 28 pixel
+# grid of values that range from 0 (white) to 255 (black) with in-between
+# values being shades of gray.
 
 def convert(image_file, label_file, output_file, num_images):
   labels = open(label_file, "rb")
@@ -37,9 +37,22 @@ def convert(image_file, label_file, output_file, num_images):
   labels.close()
 
 def main():
-  convert("./train-images-idx3-ubyte",
+  convert(
+          # This should match the name of your copy of the unzipped MNIST image
+          # binary
+          "./train-images-idx3-ubyte",
+
+          # This should match the name of your copy of the unzipped MNIST label
+          # binary
           "./train-labels-idx1-ubyte",
-          "mnistTest.json", 3)
+
+          # Change this to what you want your JSON object to be called
+          "mnistTest.json",
+          
+          # Change this value to the number of images you want output to your
+          # JSON object
+          3
+        )
 
 if __name__ == "__main__":
   main()
