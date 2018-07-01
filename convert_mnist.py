@@ -38,12 +38,10 @@ def convert(image_file, label_file, output_file, num_images):
 
 def main():
   convert(
-          # This should match the name of your copy of the unzipped MNIST image
-          # binary
+          # This should match the path of the unzipped MNIST image binary
           "./train-images-idx3-ubyte",
 
-          # This should match the name of your copy of the unzipped MNIST label
-          # binary
+          # This should match the path of the unzipped MNIST label binary
           "./train-labels-idx1-ubyte",
 
           # Change this to what you want your JSON object to be called
