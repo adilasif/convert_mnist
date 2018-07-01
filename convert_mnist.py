@@ -1,31 +1,40 @@
 # The MNIST dataset has labels (which denote the correct value of the
 # handwritten digit) and pixel values separate. The images are a 28
 # by 28 pixel grid of values that range from 0 (white) to 255 (black)
-# with in-between values being shades of gray. 
+# with in-between values being shades of gray.
 
 def convert(image_file, label_file, output_file, num_images):
   labels = open(label_file, "rb")
   images = open(image_file, "rb")
   output = open(output_file, "w")
 
-  # Discard header info
+  # Discards header info
   images.read(16)
   labels.read(8)
 
-  # Outputs label and pixel values in JSON-ish format
-  output.write("{\n")
-  for i in range(num_images):   # Number of images requested 
-    label = ord(labels.read(1)) # Reads label value
-    output.write('"' + str(i) + '": {\n  "digit": ' + str(label) + ',\n')
-    output.write('  "pixels": [')
-    for j in range(784): # 28 * 28 = 784 = number of pixels per image
-      value = ord(images.read(1)) # Reads pixel value
-      output.write(str(value) + ', ')
-    output.write(']\n},\n')
-  output.write('\n}')
+  # Writes image and label data to output file in JSON format
+  output.write('{\n  "imageCount": ' + str(num_images) + ',\n  "images": [\n')
+  for i in range(num_images):
+    label = ord(labels.read(1))
+    output.write('    {\n      "digit": ' + str(label) + ',\n')
+    output.write('      "pixels": [')
+
+    # There are 28**2 or 784 pixels per image
+    for j in range(784):
+      value = ord(images.read(1))
+      if j == 0:
+        output.write(str(value))
+      else:
+        output.write(', ' + str(value))
+    output.write(']\n    }')
+    if i < num_images - 1:
+      output.write(',\n')
+  output.write('\n  ]\n}')
 
   # Closes files when read/write operations are finished
-  images.close(); output.close(); labels.close()
+  images.close()
+  output.close()
+  labels.close()
 
 def main():
   convert("./train-images-idx3-ubyte",
