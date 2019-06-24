@@ -7,6 +7,6 @@ ___
 
 2: Extract MNIST files to same directory as this script.
 
-3: Go to the `main` function in the script (lines 39 - 55). Follow the directions in the comments to adjust your parameters.
+3: Go to the `main` function in the script (lines 37 - 51). Follow the directions in the comments to adjust your parameters.
 
 4: Run the script using `python convert_mnist.py` in the terminal.
